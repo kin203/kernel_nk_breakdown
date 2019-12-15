@@ -12,15 +12,13 @@
 #
 # Please maintain this if you use this script or any part of it
 
-# Init Script
 KERNEL_DIR=/home/nk203/Desktop/test/whyred
 KERNEL="Image.gz-dtb"
 KERN_IMG=$KERNEL_DIR/out/arch/arm64/boot/Image.gz-dtb
 BUILD_START=$(date +"%s")
 ANYKERNEL_DIR=/home/nk203/Desktop/AnyKernel2
 EXPORT_DIR=/home/nk203/Desktop/flashablezips
-
-# Make Changes to this before release
+#Zip name after build complete
 ZIP_NAME="NK-BreakDown"
 
 # Color Code Script
@@ -34,7 +32,6 @@ Cyan='\e[0;36m'         # Cyan
 White='\e[0;37m'        # White
 nocol='\033[0m'         # Default
 
-# Tweakable Options Below
 export ARCH=arm64
 export SUBARCH=arm64
 export KBUILD_BUILD_USER="NK203"
@@ -42,8 +39,6 @@ export KBUILD_BUILD_HOST="CL"
 export CROSS_COMPILE="/home/nk203/Desktop/aarch64-linux-android-4.9/bin/aarch64-linux-android-"
 export CROSS_COMPILE_ARM32="/home/nk203/Desktop/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-"
 export KBUILD_COMPILER_STRING=$(/home/nk203/Desktop/linux-x86/clang-r365631c/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
-
-# Branding
 
 echo ""
 echo ""
@@ -55,7 +50,6 @@ do
     case $opt in
         "Build NK Kernel")
             echo "You chose choice 1: Build NK Kernel"
-# Compilation Scripts Are Below
 echo -e "${Green}"
 echo "-----------------------------------------------"
 echo "  Initializing build to compile Ver: $ZIP_NAME    "
@@ -88,7 +82,6 @@ make -j$(nproc --all) O=out ARCH=arm64 \
 		      CC="/home/nk203/Desktop/linux-x86/clang-r365631c/bin/clang" \
                       CLANG_TRIPLE="aarch64-linux-gnu-" | tee ~/build.log
 
-# If the above was successful
 if [ -a $KERN_IMG ]; then
    BUILD_RESULT_STRING="BUILD SUCCESSFUL"
 
@@ -116,10 +109,8 @@ mkdir ${ZIP_EXPORT}
 mv ${ZIP_LOCATION} ${ZIP_EXPORT}
 cd ${HOME}
 
-# End the script
 echo "${BUILD_RESULT_STRING}!"
 
-# BUILD TIME
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
 echo -e "$Yellow Build completed in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds.$nocol"
@@ -127,7 +118,6 @@ break
             ;;
         "Test Build Kernel")
             echo "You chose choice 2: Test Build Kernel"
-# Compilation Scripts Are Below
 echo -e "${Green}"
 echo "-----------------------------------------------"
 echo "  Initializing build to compile Ver: $ZIP_NAME    "
@@ -160,7 +150,6 @@ make -j$(nproc --all) O=out ARCH=arm64 \
 		      CC="/home/nk203/Desktop/linux-x86/clang-r365631c/clang" \
                       CLANG_TRIPLE="aarch64-linux-gnu-"
 
-# If the above was successful
 if [ -a $KERN_IMG ]; then
    BUILD_RESULT_STRING="BUILD SUCCESSFUL"
 
@@ -168,10 +157,8 @@ else
    BUILD_RESULT_STRING="BUILD FAILED"
 fi
 
-# End the script
 echo "${BUILD_RESULT_STRING}!"
 
-# BUILD TIME
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
 echo -e "$Yellow Build completed in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds.$nocol"
