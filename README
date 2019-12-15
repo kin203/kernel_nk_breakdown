@@ -1,5 +1,5 @@
-# ***NK                                             Kernel***
-# ****                   More Stablity                   ****
+# ***NK              Kernel***
+# **** More Stablity ****
 
 ## NK Kernel is a custom stable kernel of following devices  - 
 Redmi Note 5 Pro (Whyred)
@@ -17,7 +17,7 @@ Install the Linux,Debian Operating System first (Ubuntu,Linux,Linux Mind,Ect.)
     // Clone Repository
     git clone https://github.com/kin203/AnyKernel2.git
     git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86
-    git clone https://github.com/kin203/kernel_nk_breakdown.git
+    git clone https://github.com/kin203/NK-Kernel.git
     // Make Flashable Zip Folder
     mkdir flashablezips
     // Execute Build Script
@@ -33,4 +33,4 @@ Contact Me (Telegram): @Nk203 (https://t.me/Nk203)
 
 ## Links
 
-- NK Kernel GitHub - [https://github.com/kin203/NK-Kernel](https://github.com/kin203/kernel_nk_breakdown)
+- NK Kernel GitHub - [https://github.com/kin203/NK-Kernel](https://github.com/kin203/NK-Kernel)
